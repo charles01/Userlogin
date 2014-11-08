@@ -4,13 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+ 
 
-import com.opensymphony.xwork2.ActionSupport;
-
-public class UserLogin extends ActionSupport{
-	
-	private static final long serialVersionUID=6677091252031583948L;
-
+public class UserLogin{
 	private String username,password;
 	
 
@@ -34,24 +30,25 @@ public class UserLogin extends ActionSupport{
 	{
 		try
 		{
-			
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/employee","root","root");
-	    Statement s=conn.createStatement();
-		String query="select * from empdetail";
-		ResultSet rs=s.executeQuery(query);
-	    while(rs.next())
-	    {
-	    	String user=rs.getString(1);
-	    	String pwd=rs.getString(2);
-	    	{
-	    		if(username.equals(user)&&password.equals(pwd))
-	    			
-	    		{
-	    			return "success";
-	    		}
-	    	}
-	
+			final String classname ="com.mysql.jdbc.Driver"; 
+			final String url="jdbc:mysql://localhost:3306/employee";
+			final String uname="root";
+			final String passwd="root";
+			final String query="select * from empdetail";
+		
+			Class.forName(classname);
+			Connection conn=DriverManager.getConnection(url+uname+passwd);
+	    		Statement s=conn.createStatement();
+			ResultSet rs=s.executeQuery(query);
+	    			while(rs.next() {
+	    				String user=rs.getString(1);
+	    				String pwd=rs.getString(2);
+	    					{
+	    						if(username.equals(user)&&password.equals(pwd))
+	    						{
+	    							return "success";
+	    						}
+	    					}
 		}
 	    conn.close();
 	}
