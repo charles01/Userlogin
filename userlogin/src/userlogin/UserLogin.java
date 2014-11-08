@@ -31,7 +31,7 @@ public class UserLogin{
 			final String query="select * from empdetail";
 		
 			Class.forName(classname);
-			Connection conn=DriverManager.getConnection(url+uname+passwd);
+			Connection conn=DriverManager.getConnection(url,uname,passwd);
 	    		Statement s=conn.createStatement();
 			ResultSet rs=s.executeQuery(query);
 	    			while(rs.next() {
