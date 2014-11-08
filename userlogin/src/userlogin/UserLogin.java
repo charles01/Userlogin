@@ -4,16 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
- 
-
 public class UserLogin{
 	private String username,password;
 	
-
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -26,10 +22,8 @@ public class UserLogin{
 		this.username = username;
 	}
 	
-	public String execute()
-	{
-		try
-		{
+	public String execute(){
+		try{
 			final String classname ="com.mysql.jdbc.Driver"; 
 			final String url="jdbc:mysql://localhost:3306/employee";
 			final String uname="root";
